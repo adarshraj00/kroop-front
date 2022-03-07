@@ -1,23 +1,30 @@
 import axios from "axios";
 export default {
   saveNewBook: (book) => {
-    return axios.post(`${process.env.BACKEND_URL}/api/books/add-new-book`, book, {
-      withCredentials: true,
-    });
+    return axios.post(
+      `https://book-management0.herokuapp.com/api/books/add-new-book`,
+      book,
+      {
+        withCredentials: true,
+      }
+    );
   },
   getAllBooks: () => {
-    return axios.get(`${process.env.BACKEND_URL}/api/books/all`, {
+    return axios.get(`https://book-management0.herokuapp.com/api/books/all`, {
       withCredentials: true,
     });
   },
   getAvailableBooks: () => {
-    return axios.get(`${process.env.BACKEND_URL}/api/books/available`, {
-      withCredentials: true,
-    });
+    return axios.get(
+      `https://book-management0.herokuapp.com/api/books/available`,
+      {
+        withCredentials: true,
+      }
+    );
   },
   incrementBookCount: (id) => {
     return axios.put(
-      `${process.env.BACKEND_URL}/api/books/increment-book-count/${id}`,
+      `https://book-management0.herokuapp.com/api/books/increment-book-count/${id}`,
       {
         withCredentials: true,
       }
@@ -25,21 +32,27 @@ export default {
   },
   decrementBookCount: (id) => {
     return axios.put(
-      `${process.env.BACKEND_URL}/api/books/decrement-book-count/${id}`,
+      `https://book-management0.herokuapp.com/api/books/decrement-book-count/${id}`,
       {
         withCredentials: true,
       }
     );
   },
   deleteBook: (id) => {
-    return axios.delete(`${process.env.BACKEND_URL}/api/books/${id}`, {
-      withCredentials: true,
-    });
+    return axios.delete(
+      `https://book-management0.herokuapp.com/api/books/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
   },
   getRecommendations: (id) => {
-    return axios.get(`${process.env.BACKEND_URL}/api/books/recommendations`, {
-      withCredentials: true,
-    });
+    return axios.get(
+      `https://book-management0.herokuapp.com/api/books/recommendations`,
+      {
+        withCredentials: true,
+      }
+    );
   },
   getSearchResults: ({author, title, startYear, endYear}) => {
     let str = "";
@@ -56,13 +69,19 @@ export default {
       str += "endYear=" + endYear;
     }
     console.log(str)
-    return axios.get(`${process.env.BACKEND_URL}/api/books/search?${str}`, {
-      withCredentials: true,
-    });
+    return axios.get(
+      `https://book-management0.herokuapp.com/api/books/search?${str}`,
+      {
+        withCredentials: true,
+      }
+    );
   },
   issueBook:(id)=>{
-    return axios.post(`${process.env.BACKEND_URL}api/books/issue/${id}`, {
-      widthCredentials: true,
-    });
+    return axios.post(
+      `https://book-management0.herokuapp.comapi/books/issue/${id}`,
+      {
+        widthCredentials: true,
+      }
+    );
   }
 };

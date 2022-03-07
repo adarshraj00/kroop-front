@@ -3,7 +3,7 @@ export default {
   loginAdmin: ({ id }) => {
     console.log(id);
     return axios.post(
-      `${process.env.BACKEND_URL}/api/auth/login-admin`,
+      `https://book-management0.herokuapp.com/api/auth/login-admin`,
       {
         id,
       },
@@ -12,7 +12,7 @@ export default {
   },
   loginUser: ({ id, password }) => {
     return axios.post(
-      `${process.env.BACKEND_URL}/api/auth/login-user`,
+      `https://book-management0.herokuapp.com/api/auth/login-user`,
       {
         id,
         password,
@@ -27,11 +27,14 @@ export default {
     });
   },
   logout: () => {
-    return axios.post(`${process.env.BACKEND_URL}/api/auth/logout`);
+    return axios.post(`https://book-management0.herokuapp.com/api/auth/logout`);
   },
   getState: () => {
-    return axios.post(`${process.env.BACKEND_URL}/api/auth/get-state`, {
-      withCredentials: true,
-    });
+    return axios.post(
+      `https://book-management0.herokuapp.com/api/auth/get-state`,
+      {
+        withCredentials: true,
+      }
+    );
   },
 };
