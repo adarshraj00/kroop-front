@@ -1,31 +1,45 @@
 import axios from "axios";
 export default {
   saveNewBook: (book) => {
-    return axios.post("/api/books/add-new-book", book, {
+    return axios.post(`${process.env.BACKEND_URL}/api/books/add-new-book`, book, {
       withCredentials: true,
     });
   },
   getAllBooks: () => {
-    return axios.get("/api/books/all", { withCredentials: true });
+    return axios.get(`${process.env.BACKEND_URL}/api/books/all`, {
+      withCredentials: true,
+    });
   },
   getAvailableBooks: () => {
-    return axios.get("/api/books/available", { withCredentials: true });
+    return axios.get(`${process.env.BACKEND_URL}/api/books/available`, {
+      withCredentials: true,
+    });
   },
   incrementBookCount: (id) => {
-    return axios.put(`/api/books/increment-book-count/${id}`, {
-      withCredentials: true,
-    });
+    return axios.put(
+      `${process.env.BACKEND_URL}/api/books/increment-book-count/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
   },
   decrementBookCount: (id) => {
-    return axios.put(`/api/books/decrement-book-count/${id}`, {
+    return axios.put(
+      `${process.env.BACKEND_URL}/api/books/decrement-book-count/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+  },
+  deleteBook: (id) => {
+    return axios.delete(`${process.env.BACKEND_URL}/api/books/${id}`, {
       withCredentials: true,
     });
   },
-  deleteBook: (id) => {
-    return axios.delete(`/api/books/${id}`, { withCredentials: true });
-  },
   getRecommendations: (id) => {
-    return axios.get("/api/books/recommendations", { withCredentials: true });
+    return axios.get(`${process.env.BACKEND_URL}/api/books/recommendations`, {
+      withCredentials: true,
+    });
   },
   getSearchResults: ({author, title, startYear, endYear}) => {
     let str = "";
@@ -42,9 +56,13 @@ export default {
       str += "endYear=" + endYear;
     }
     console.log(str)
-    return axios.get(`/api/books/search?${str}`, { withCredentials: true });
+    return axios.get(`${process.env.BACKEND_URL}/api/books/search?${str}`, {
+      withCredentials: true,
+    });
   },
   issueBook:(id)=>{
-    return axios.post(`api/books/issue/${id}`,{widthCredentials:true})
+    return axios.post(`${process.env.BACKEND_URL}api/books/issue/${id}`, {
+      widthCredentials: true,
+    });
   }
 };
